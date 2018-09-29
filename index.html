@@ -8,10 +8,16 @@
 
     <!-- CSS Stylesheets -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech" rel="stylesheet">
+
     <!-- Javascript Includes -->
-    <script src="game.js"></script>
+    <script src="assets/javascript/words.js"></script>
+    <script src="assets/javascript/game.js"></script>
 </head>
 
 <body>
@@ -25,35 +31,36 @@
 
     <!-- Banner & Navigaation -->
     <header>
-        <img src="assets/images/2-WordGuess.jpg" alt="Word Guess Banner" width="100%">
+        <div id="#banner">
+            <img src="assets/images/banner-scifi.png" alt="Sci-Fi Word Guess Banner" width="100%">
+        </div>
     </header>
 
     <!-- Game Display -->
-    <p>Press and key to get started</p>
-    <p>Wins:  <span id="wins">games.wins</span></p>
-    <p>Current word:  <span id="currentWord"> game.currentWord </span></p>
-    <hr>
-    <p>Number of guesses remaining: <span id="guessesLeft"> 20 </span></p> 
-    <p>Letters already guessed:</p>
-    <p id="lettersGuessed"> None </p>
+    <div class="container">
+        <p>Press and key to get started</p>
+        <p>Wins:  <span id="wins">games.wins</span></p>
+        <p>Current word:  <span id="currentWord"> game.currentWord </span></p>
+        <hr>
+        <p>Number of guesses remaining: <span id="guessesLeft"> 20 </span></p> 
+        <p>Letters already guessed:</p>
+        <p id="lettersGuessed"> None </p>
 
-    <script type="text/javascript">
-         Game Engine:  Process the input events */
-        document.onkeyup = function (event) {
+        <script type="text/javascript">
+            /* Game Engine:  Process the input events */
+            document.onkeyup = function (event) {
 
-            // Get keystroke
-            var userGuess =  event.key.toLowerCase();
+                // Get keystroke
+                var userGuess =  event.key.toLowerCase();
 
-            // Create a new game if none in progress
-            if (gameRunning) {
-                startNewGame();
-                return;
-            }
-
-
-        
-        }
+                // Create a new game if none in progress
+                if (game.gameInProgress == false) {
+                    game.resetGame();
+                    return;
+                };            
+            };
     </script>
+    </div>
 
 </body>
 </html>

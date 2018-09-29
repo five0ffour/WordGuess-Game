@@ -1,7 +1,7 @@
 // Board - tracks the overall number of games
 var board = {
     wins : 0,
-    losses: 0s
+    losses: 0,
 };
 
 // Game - tracks the current game in progress
@@ -16,7 +16,7 @@ var game = {
     lettersGuessed:  [],
 
     // game object functions
-    initGame :  function () {
+    resetGame :  function () {
         this.letterGuessed = "";
         this.gameInProgress = true;
         this.answer = wordTable.getRandomWord();

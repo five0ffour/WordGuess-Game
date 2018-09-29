@@ -3,7 +3,7 @@
 var wordTable = {
 
     // Methods
-    function getRandomWord() {
+    getRandomWord : function () {
         // TO-DO:  add random word selector here
         return "Firefly";
     },

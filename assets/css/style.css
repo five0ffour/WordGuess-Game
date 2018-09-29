@@ -1,3 +1,10 @@
-header {
+.h1,
+.h2 {
+    font-family: 'Share Tech', sans-serif;
     width: 100%;
+}
+
+.p {
+    font-family: 'Share Tech', sans-serif;
+    font-size: 16px;
 }
