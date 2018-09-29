@@ -1,0 +1,59 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Word Guess Game</title>
+
+    <!-- CSS Stylesheets -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+
+    <!-- Javascript Includes -->
+    <script src="game.js"></script>
+</head>
+
+<body>
+    <!-- Javascript variable declarations -->
+    <script type="text/javascript">
+
+        var game;
+        var board;
+
+    </script>
+
+    <!-- Banner & Navigaation -->
+    <header>
+        <img src="assets/images/2-WordGuess.jpg" alt="Word Guess Banner" width="100%">
+    </header>
+
+    <!-- Game Display -->
+    <p>Press and key to get started</p>
+    <p>Wins:  <span id="wins">games.wins</span></p>
+    <p>Current word:  <span id="currentWord"> game.currentWord </span></p>
+    <hr>
+    <p>Number of guesses remaining: <span id="guessesLeft"> 20 </span></p> 
+    <p>Letters already guessed:</p>
+    <p id="lettersGuessed"> None </p>
+
+    <script type="text/javascript">
+         Game Engine:  Process the input events */
+        document.onkeyup = function (event) {
+
+            // Get keystroke
+            var userGuess =  event.key.toLowerCase();
+
+            // Create a new game if none in progress
+            if (gameRunning) {
+                startNewGame();
+                return;
+            }
+
+
+        
+        }
+    </script>
+
+</body>
+</html>
