@@ -19,11 +19,14 @@ var prompts = {
 
      // updates the display with the results
      reportResults : function (game, scoreboard) {
-        this.keyPrompt.textContent      = "Press any letter key to play your turn"
         this.wins.textContent           = scoreboard.wins;
         this.losses.textContent         = scoreboard.losses;
         this.currentWord.textContent    = game.currentWord;
         this.lettersGuessed.textContent = game.lettersGuessed;
         this.guessesLeft.textContent    = game.guessesLeft;
+    },
+
+    status : function (msg) {
+        this.keyPrompt.textContent      = msg;
     }
 }

@@ -68,11 +68,16 @@
 
                     // Write out the starting state
                     prompts.reportResults(game, scoreboard);
+                    prompts.status("Let's do this!!")
                     return;
                 };
 
                 // Play a round
-                game.playRound(userGuess);
+                if (game.playRound(userGuess)) {
+                    prompts.status("Good guess");
+                } else {
+                    prompts.status("Oops,  try again");
+                }
 
                 // Update the display with new state
                 prompts.reportResults(game, scoreboard);
