@@ -39,7 +39,7 @@
         <p>Losses: <span id="losses">0</span></p>
         <p>Current word: <span id="currentWord"> ""</span></p>
         <hr>
-        <p>Number of guesses remaining: <span id="guessesLeft"> 20 </span></p>
+        <p>Number of guesses remaining: <span id="guessesLeft"> 10 </span></p>
         <p>Letters already guessed: <span id="lettersGuessed"> None </span></p>
 
         <!-- Javascript variable and function declarations -->
@@ -74,13 +74,24 @@
 
                 // Play a round
                 if (game.playRound(userGuess)) {
-                    prompts.status("Good guess");
+                    prompts.status("Guess " + (game.maxGuesses - game.guessesLeft) + ": Good guess");
                 } else {
-                    prompts.status("Oops,  try again");
+                    prompts.status("Guess " + (game.maxGuesses - game.guessesLeft) + ": Oops, try again");
                 }
 
                 // Update the display with new state
                 prompts.reportResults(game, scoreboard);
+
+                if (game.wonGame())
+                {
+                    game.gameInProgress = false;
+                    prompts.status("Congratulations!  You won!!");
+                }
+                else if (game.gameOver())
+                {
+                    game.gameInProgress = false;
+                    prompts.status("Sorry!  Better luck next time!  Press any key to start again");
+                }
             };
         </script>
     </div>

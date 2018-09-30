@@ -4,8 +4,12 @@ var wordTable = {
 
     // Methods
     getRandomWord : function () {
-        // TO-DO:  add random word selector here
-        return "Firefly";
+
+      // Randomly chooses a choice from the words array.
+      var choice = this.words[Math.floor(Math.random() * this.words.length)];   
+      console.log("The solution to this game will be: \"" + choice + "\"");     
+      
+      return choice;
     },
 
     // Possible answers
