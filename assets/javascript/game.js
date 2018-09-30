@@ -1,9 +1,3 @@
-// Board - tracks the overall number of games
-var board = {
-    wins : 0,
-    losses: 0,
-};
-
 // Game - tracks the current game in progress
 var game = {
     
@@ -16,10 +10,19 @@ var game = {
     lettersGuessed:  [],
 
     // game object functions
+
+    // resets the board to a new game
     resetGame :  function () {
-        this.letterGuessed = "";
+        this.lettersGuessed = "";
         this.gameInProgress = true;
         this.answer = wordTable.getRandomWord();
+    },
+
+    // adjudicates one guess and updates game state
+    playRound : function (guess) {
+        guessesLeft--;
+        boardState = "F O O  - - - ";
+        lettersGuessed = "F, O"
+        lettersGuessed = guess;
     }
 };
-
