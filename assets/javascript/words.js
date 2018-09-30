@@ -104,6 +104,7 @@ var wordTable = {
         "Star Trek: The Next Generation",
         "The X-Files",
         "Doctor Who",
-        "Battlestar Galactica" 
+        "Battlestar Galactica",
+        "Flash Gordon",
     ]
 };

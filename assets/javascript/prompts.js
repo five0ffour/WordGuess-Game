@@ -19,17 +19,11 @@ var prompts = {
 
      // updates the display with the results
      reportResults : function (game, scoreboard) {
-        this.keyPrompt.textContent      = "Your turn to guess a letter";
-        // this.wins.textContent           = scoreboard.wins;
-        // this.losses.textContent         = scoreboard.losses;
-        // this.currentWord.textContent    = game.currentWord;
-        // this.lettersGuessed.textContent = game.lettersGuessed;
-        // this.guessesLeft.textContent    = game.guessesLeft;
-        this.wins.textContent           = "wins";
-        this.losses.textContent         = "losses";
-        this.currentWord.textContent    = "current word";
-        this.lettersGuessed.textContent = "letters guessed";
-        this.guessesLeft.textContent    = "guesses left";
-
+        this.keyPrompt.textContent      = "Press any letter key to play your turn"
+        this.wins.textContent           = scoreboard.wins;
+        this.losses.textContent         = scoreboard.losses;
+        this.currentWord.textContent    = game.currentWord;
+        this.lettersGuessed.textContent = game.lettersGuessed;
+        this.guessesLeft.textContent    = game.guessesLeft;
     }
 }

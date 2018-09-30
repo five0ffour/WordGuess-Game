@@ -2,27 +2,28 @@
 var game = {
     
     // object variables 
-    gameInProgress : false,
-    currentWord : "",
-    maxGuesses:  20,
-    guessesLeft: 20,
-    boardState  : [],
-    lettersGuessed:  [],
+    gameInProgress : false,     // flags that the game is in progress
+    solution       : "",        // the secret word, no cheating!!
+    maxGuesses     : 20,        // number of tries use gets before game ends
+    guessesLeft    : 20,        // number of guesses remaining in game
+    boardState     : "",        // the partially revealed solution based on user guesses
+    lettersGuessed : "",        // array of user guesses
 
     // game object functions
 
     // resets the board to a new game
     resetGame :  function () {
-        this.lettersGuessed = "";
         this.gameInProgress = true;
-        this.answer = wordTable.getRandomWord();
+        this.boardState = "";
+        this.lettersGuessed = "";
+        this.guessesLeft = this.maxGuesses;
+        this.solution = wordTable.getRandomWord();
     },
 
     // adjudicates one guess and updates game state
     playRound : function (guess) {
-        guessesLeft--;
-        boardState = "F O O  - - - ";
-        lettersGuessed = "F, O"
-        lettersGuessed = guess;
+        this.guessesLeft--;
+        this.boardState = "F O O  - - - ";
+        this.lettersGuessed = "F, O"
     }
 };
