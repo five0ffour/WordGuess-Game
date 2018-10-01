@@ -47,13 +47,12 @@
                         <p class="card-text small">
                             <p>Messages:</p>
                             <p id="keyPrompt" style="color:red;">Press any key to get started</p>
-                            <!-- <button class="btn btn-primary" type="submit">Start</button> -->
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-xs-12 col-lg-3">
                 <div class="card" id="stats">
@@ -61,9 +60,20 @@
                         <p class="card-text small">
                             <!-- Scoreboard Status -->
                             <h5>Scoreboard:</h5>
-                            <p>Wins: <span id="wins">0</span></p>
-                            <p>Losses: <span id="losses">0</span></p>
-                            <p>Total Games: <span id="totalGames">0</span></p>
+                            <table>
+                                <tr>
+                                    <th scope="row">Wins </th>
+                                    <td id="wins">0</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Losses</th>
+                                    <td id="losses">0 </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Total Games</th>
+                                    <td id="totalGames">0 </td>
+                                </tr>
+                            </table>
                         </p>
                     </div>
                 </div>
@@ -75,9 +85,23 @@
                         <p class="card-text small">
                             <!-- Current Game Status -->
                             <h5>Current Game:</h5>
-                            <p>Current word: <span id="currentWord"> None </span></p>
+                            <table>
+                                <tr>
+                                    <th scope="row">Current Word</th>
+                                    <td id="currentWord">None</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Number of guesses remaining</th>
+                                    <td id="guessesLeft">6</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Letters already guessed</th>
+                                    <td id="lettersGuessed">None</td>
+                                </tr>
+                            </table>
+                            <!-- <p>Current word: <span id="currentWord"> None </span></p>
                             <p>Number of guesses remaining: <span id="guessesLeft"> 6 </span></p>
-                            <p>Letters already guessed: <span id="lettersGuessed"> None </span></p>
+                            <p>Letters already guessed: <span id="lettersGuessed"> None </span></p> -->
                         </p>
                     </div>
                 </div>
