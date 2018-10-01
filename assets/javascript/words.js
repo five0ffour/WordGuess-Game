@@ -1,5 +1,4 @@
 // List of possible games - From Rotten Tomatoes
-// https://www.businessinsider.com/best-science-fiction-movies-all-time-critics-reviews-2018-8
 var wordTable = {
 
     // Methods

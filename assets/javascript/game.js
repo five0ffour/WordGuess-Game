@@ -13,8 +13,14 @@ var game = {
 
     // wonGame() - checks to see if the user found our word
     wonGame: function () {
-        // TODO - Check  win criteria here
-        return false;
+        var won = false;
+
+        if (this.boardState.toUpperCase() === this.solution.toUpperCase()) {
+            console.log("User wins game");
+            won = true;
+        }
+
+        return won;
     },
 
     // checks to see if the guess limit is reached
@@ -96,6 +102,8 @@ var game = {
         return true;
     },
 
+    // replaceAt() - Utility function to allows us to subtitute one character in a string
+    // Strings are immutable, so it returns a copy of it
     replaceAt : function(str, index, replacement) {
         return str.substr(0, index) + replacement+ str.substr(index + replacement.length);
     }

@@ -54,7 +54,9 @@
             /* Save screen elements for later updates*/
             prompts.getElementIds(document);
 
+            /*----------------------------------------*/
             /* Game Engine:  Process the input events */
+            /*----------------------------------------*/
             document.onkeyup = function (event) {
 
                 // Get keystroke
@@ -68,30 +70,41 @@
 
                     // Write out the starting state
                     prompts.reportResults(game, scoreboard);
-                    prompts.status("Let's do this!!")
+                    prompts.status("Let's do this!! - Choose a letter")
                     return;
                 };
 
+                // Validate input - confirm they entered a letter
+                // if (game.validGuess() == false) {
+                //      prompts.status("Guess " + (game.maxGuesses - game.guessesLeft) + ": Oops, invalid key, try again");
+                //      return;
+                // }
+
                 // Play a round
                 if (game.playRound(userGuess)) {
-                    prompts.status("Guess " + (game.maxGuesses - game.guessesLeft) + ": Good guess");
+                    prompts.status("Guess " + (game.maxGuesses - game.guessesLeft) + ": Nice guess -- keep going");
                 } else {
                     prompts.status("Guess " + (game.maxGuesses - game.guessesLeft) + ": Oops, try again");
                 }
 
-                // Update the display with new state
-                prompts.reportResults(game, scoreboard);
-
+                // Score the results
                 if (game.wonGame())
                 {
+                    scoreboard.wins++;
+
                     game.gameInProgress = false;
-                    prompts.status("Congratulations!  You won!!");
+                    prompts.status("Congratulations!  You won!! -- Press any key to start again");
                 }
                 else if (game.gameOver())
                 {
+                    scoreboard.losses++;
+
                     game.gameInProgress = false;
-                    prompts.status("Sorry!  Better luck next time!  Press any key to start again");
+                    prompts.status("Sorry!  Better luck next time! -- Press any key to start again");
                 }
+                
+                // Update the display with new state
+                prompts.reportResults(game, scoreboard);
             };
         </script>
     </div>
