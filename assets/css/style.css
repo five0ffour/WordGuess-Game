@@ -1,7 +1,7 @@
 h1,
 h2 {
     font-family: 'Orbitron', sans-serif;
-        width: 100%;
+    width: 100%;
 }
 
 h5 {
@@ -10,6 +10,16 @@ h5 {
 }
 
 p {
-    /* font-family: 'Share Tech', sans-serif; */
     font-size: 16px;
+}
+
+#currentWord,
+#wins,
+#losses,
+#guessesLeft,
+#lettersGuessed {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    color: blue;
+    padding: 10px;
 }

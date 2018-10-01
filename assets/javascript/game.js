@@ -1,37 +1,85 @@
 // Game - tracks the current game in progress
 var game = {
 
+    //------------------
     // object variables 
+    //------------------
     gameInProgress: false, // flags that the game is in progress
     solution: [], // the secret word, no cheating!!
-    maxGuesses: 10, // number of tries use gets before game ends
-    guessesLeft: 10, // number of guesses remaining in game
+    maxGuesses: 10, // number of *wrong* guesses use gets before game ends
+    guessesLeft: 10, // number of *wrong* guesses remaining in game
+    actualGuesses: 0,  // number of *valid* guesses actually taken (right or wrong)
     boardState: [], // the partially revealed solution based on user guesses
     lettersGuessed: [], // array of user guesses
 
+    //-----------------------
     // game object functions
+    //-----------------------
 
+    //---
+    // getNumGuesses() - computes the round we're in based on the valid guesses
+    //---
+    getNumGuesses : function () {
+        return this.actualGuesses;
+    },
+
+    //---
+    // inProgress() - responds if we are in the middle of a game
+    //               (and need to keep track of state changes)
+    inProgress : function () {
+        return this.gameInProgress;
+    },
+
+    //---
+    // stopGame() - sets flag to stop the game (to stop tracking state)
+    //---
+    stopGame : function () {
+        this.gameInProgress = false;
+    },
+
+    //---
+    // validKey() - Determine if this an acceptable keystroke.
+    //              We only accept [a-z] or [A-Z]
+    //              May consider adding a quit key (Escape) and hint key (?)
+    //---
+    validKey: function (key) {
+
+        if (!/^[a-zA-Z]*$/g.test(key)) {
+            console.log("game.validKey() - invalid character [" + key + "]");
+            return false;
+        }
+
+        return true;
+    },
+
+    //---
     // wonGame() - checks to see if the user found our word
+    //---
     wonGame: function () {
         var won = false;
 
         if (this.boardState.toUpperCase() === this.solution.toUpperCase()) {
-            console.log("User wins game");
+            console.log("game.wonGame() - User wins game");
             won = true;
         }
 
         return won;
     },
 
-    // checks to see if the guess limit is reached
+    //---
+    // gameOver() - checks to see if the guess limit was reached
+    //---
     gameOver: function () {
         return (this.guessesLeft <= 0);
     },
 
-    // resets the board to a new game
+    //---
+    // resetGame() - resets the board to a new game
+    //---
     resetGame: function () {
         this.gameInProgress = true;
         this.guessesLeft = this.maxGuesses;
+        this.actualGuesses = 0;
         this.lettersGuessed = [];
         this.boardState = [];
 
@@ -43,11 +91,13 @@ var game = {
         this.boardState = this.solution;
         this.boardState = this.boardState.replace(/[a-z|A-Z]/g, '_');
 
-        console.log("The board looks like: [" + this.boardState + "]");
+        console.log("game.resetGame() - The board looks like: [" + this.boardState + "]");
     },
 
+    //---
     // saveGuess() - saves the guess into our array and returns whether it was a valid guess (wasn't 
-    // previously guessed)
+    //               previously guessed)
+    //---
     saveGuess(letter) {
         var foundLetter = false;
 
@@ -71,7 +121,9 @@ var game = {
         return (!foundLetter);
     },
 
+    //---
     // playRouund() - adjudicates one guess and updates game state, returns true if the round was valid
+    //---
     playRound: function (guess) {
         var matched = false;
 
@@ -81,6 +133,9 @@ var game = {
             return false;
         }
 
+        // Record this as a valid guess for reporting
+        this.actualGuesses++;
+
         // See if guess matches the solution
         for (i=0; i<this.solution.length; i++) {
             if (this.solution[i].toLowerCase() === guess) {
@@ -88,7 +143,7 @@ var game = {
 
                 // update our board state
                 this.boardState = this.replaceAt(this.boardState, i, guess);
-                console.log("playRound() - match! \'" + guess + "\' at position: " + i);
+                console.log("game.playRound() - match! \'" + guess + "\' at position: " + i);
             }
         }
 
@@ -102,8 +157,10 @@ var game = {
         return true;
     },
 
+    //---
     // replaceAt() - Utility function to allows us to subtitute one character in a string
-    // Strings are immutable, so it returns a copy of it
+    //               Strings are immutable, so it returns a copy of it
+    //---
     replaceAt : function(str, index, replacement) {
         return str.substr(0, index) + replacement+ str.substr(index + replacement.length);
     }

@@ -41,7 +41,7 @@
         <p id="keyPrompt" style="color:red">Press and key to get started</p>
         <p>Wins: <span id="wins">0</span></p>
         <p>Losses: <span id="losses">0</span></p>
-        <p>Current word: <span id="currentWord"> ""</span></p>
+        <p>Current word: <span id="currentWord"> None </span></p>
         <hr>
         <p>Number of guesses remaining: <span id="guessesLeft"> 10 </span></p>
         <p>Letters already guessed: <span id="lettersGuessed"> None </span></p>
@@ -67,7 +67,7 @@
                 var userGuess = event.key.toLowerCase();
 
                 // Create a new game if none in progress
-                if (game.gameInProgress === false) {
+                if (game.inProgress() == false) {
 
                     // Clear the board 
                     game.resetGame();
@@ -79,35 +79,33 @@
                 };
 
                 // Validate input - confirm they entered a letter
-                // if (game.validGuess() == false) {
-                //      prompts.status("Guess " + (game.maxGuesses - game.guessesLeft) + ": Oops, invalid key, try again");
-                //      return;
-                // }
+                if (game.validKey(userGuess) == false) {
+                      prompts.status("Guess #" + game.getNumGuesses() + ": Oops, invalid key, we only need letters");
+                      return;
+                }
 
                 // Play a round
                 if (game.playRound(userGuess)) {
-                    prompts.status("Guess " + (game.maxGuesses - game.guessesLeft) + ": Nice guess -- keep going");
+                    prompts.status("Guess #" +  game.getNumGuesses() + ": Nice guess -- keep going");
                 } else {
-                    prompts.status("Guess " + (game.maxGuesses - game.guessesLeft) + ": Oops, try again");
+                    prompts.status("Guess #" +  game.getNumGuesses() + ": Oops, try again");
                 }
 
                 // Score the results
                 if (game.wonGame())
                 {
-                    scoreboard.wins++;
-
-                    game.gameInProgress = false;
+                    scoreboard.won();
+                    game.stopGame();
                     prompts.status("Congratulations!  You won!! -- Press any key to start again");
                 }
                 else if (game.gameOver())
                 {
-                    scoreboard.losses++;
-
-                    game.gameInProgress = false;
+                    scoreboard.lost();
+                    game.stopGame();
                     prompts.status("Sorry! It was: [ " + game.solution + " ] Better luck next time! -- Press any key to start again");
                 }
                 
-                // Update the display with new state
+                // Update the display with the new state
                 prompts.reportResults(game, scoreboard);
             };
         </script>
