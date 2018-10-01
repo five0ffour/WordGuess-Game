@@ -21,7 +21,7 @@ var prompts = {
      reportResults : function (game, scoreboard) {
         this.wins.textContent           = scoreboard.wins;
         this.losses.textContent         = scoreboard.losses;
-        this.currentWord.textContent    = game.currentWord;
+        this.currentWord.textContent    = game.boardState;
         this.lettersGuessed.textContent = game.lettersGuessed;
         this.guessesLeft.textContent    = game.guessesLeft;
     },

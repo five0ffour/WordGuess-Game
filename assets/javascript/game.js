@@ -25,12 +25,19 @@ var game = {
     // resets the board to a new game
     resetGame: function () {
         this.gameInProgress = true;
-        this.boardState = "";
         this.guessesLeft = this.maxGuesses;
+        this.lettersGuessed = [];
+        this.boardState = [];
+
         this.solution = wordTable.getRandomWord();
 
-        // Empty the array of guesses
-        this.lettersGuessed = [];
+        // Map the current board state to match the template of the new word
+        // Substitute underscores for letters, but preserve the non-letters
+        // Note:  uses regex expression matching, thank you gods of Unix!
+        this.boardState = this.solution;
+        this.boardState = this.boardState.replace(/[a-z|A-Z]/g, '_');
+
+        console.log("The board looks like: [" + this.boardState + "]");
     },
 
     // saveGuess() - saves the guess into our array and returns whether it was a valid guess (wasn't 
@@ -43,7 +50,7 @@ var game = {
         this.lettersGuessed.forEach(function (guess) {
             if (guess == letter) {
                 foundLetter = true;
-                console.log("game.saveGuess() -- found letter: " + letter)
+                console.log("game.saveGuess() -- found letter: " + letter);
             }
         });
 
@@ -60,6 +67,7 @@ var game = {
 
     // playRouund() - adjudicates one guess and updates game state, returns true if the round was valid
     playRound: function (guess) {
+        var matched = false;
 
         // Save the guess
         if (this.saveGuess(guess) == false) {
@@ -67,18 +75,30 @@ var game = {
             return false;
         }
 
-        // Valid guess, decrement counts
-        this.guessesLeft--;
-
         // See if guess matches the solution
         for (i=0; i<this.solution.length; i++) {
             if (this.solution[i].toLowerCase() === guess) {
+                matched = true;
+
                 // update our board state
+                this.boardState = this.replaceAt(this.boardState, i, guess);
                 console.log("playRound() - match! \'" + guess + "\' at position: " + i);
             }
         }
 
+        // Decrement the guesses only if they missed
+        if (matched == false)
+            this.guessesLeft--;
+
+
+
         // Valid round
         return true;
+    },
+
+    replaceAt : function(str, index, replacement) {
+        return str.substr(0, index) + replacement+ str.substr(index + replacement.length);
     }
+    
 };
+
