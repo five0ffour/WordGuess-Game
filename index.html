@@ -7,18 +7,22 @@
 
     <title>Word Guess Game</title>
 
-    <!-- CSS Stylesheets -->
+    <!-- External CSS Stylesheets -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Share+Tech" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+
+    <!-- Local CSS Stylesheets -->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
 
     <!-- Javascript Includes -->
     <script src="assets/javascript/words.js"></script>
     <script src="assets/javascript/game.js"></script>
+
 </head>
 
 <body>
@@ -100,7 +104,7 @@
                     scoreboard.losses++;
 
                     game.gameInProgress = false;
-                    prompts.status("Sorry!  Better luck next time! -- Press any key to start again");
+                    prompts.status("Sorry! It was: [ " + game.solution + " ] Better luck next time! -- Press any key to start again");
                 }
                 
                 // Update the display with new state
