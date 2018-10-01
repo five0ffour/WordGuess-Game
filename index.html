@@ -28,88 +28,123 @@
 <body>
     <!-- Banner & Navigation -->
     <header>
-        <div id="#banner">
-            <img src="assets/images/cityscape.png" alt="Sci-Fi Word Guess Banner" width="100%">
-        </div>
+        <div class="bg"></div>
     </header>
 
     <!-- Game Display -->
     <div class="container">
-        <h1>Welcome to Sci-Fi Word Guess</h1>
-        <h5>a game of guessing based on science fiction movies and tv shows</h5>
-        <hr>
-        <p id="keyPrompt" style="color:red">Press and key to get started</p>
-        <p>Wins: <span id="wins">0</span></p>
-        <p>Losses: <span id="losses">0</span></p>
-        <p>Current word: <span id="currentWord"> None </span></p>
-        <hr>
-        <p>Number of guesses remaining: <span id="guessesLeft"> 6 </span></p>
-        <p>Letters already guessed: <span id="lettersGuessed"> None </span></p>
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Welcome to Sci-Fi Word Guess</h1>
+                <h5>a game of guessing based on science fiction movies and tv shows</h5>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class=" card" id="instructions">
+                    <div class="card-body rounded">
+                        <p class="card-text small">
+                            <p>Messages:</p>
+                            <p id="keyPrompt" style="color:red;">Press any key to get started</p>
+                            <!-- <button class="btn btn-primary" type="submit">Start</button> -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-xs-12 col-lg-3">
+                <div class="card" id="stats">
+                    <div class="card-body rounded">
+                        <p class="card-text small">
+                            <!-- Scoreboard Status -->
+                            <h5>Scoreboard:</h5>
+                            <p>Wins: <span id="wins">0</span></p>
+                            <p>Losses: <span id="losses">0</span></p>
+                            <p>Total Games: <span id="totalGames">0</span></p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-lg-9">
+                <div class="card" id="stats">
+                    <div class="card-body rounded">
+                        <p class="card-text small">
+                            <!-- Current Game Status -->
+                            <h5>Current Game:</h5>
+                            <p>Current word: <span id="currentWord"> None </span></p>
+                            <p>Number of guesses remaining: <span id="guessesLeft"> 6 </span></p>
+                            <p>Letters already guessed: <span id="lettersGuessed"> None </span></p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-        <!-- Javascript variable and function declarations -->
-        <script src="assets/javascript/words.js"></script>
-        <script src="assets/javascript/prompts.js"></script>
-        <script src="assets/javascript/scoreboard.js"></script>
-        <script src="assets/javascript/game.js"></script>
+    <!-- Javascript variable and function declarations -->
+    <script src="assets/javascript/words.js"></script>
+    <script src="assets/javascript/prompts.js"></script>
+    <script src="assets/javascript/scoreboard.js"></script>
+    <script src="assets/javascript/game.js"></script>
 
-        <!-- Main Game Logic Processing -->
-        <script type="text/javascript">
+    <!-- Main Game Logic Processing -->
+    <script type="text/javascript">
+        /* Save screen elements for later updates*/
+        prompts.getElementIds(document);
 
-            /* Save screen elements for later updates*/
-            prompts.getElementIds(document);
+        /*----------------------------------------*/
+        /* Game Engine:  Process the input events */
+        /*----------------------------------------*/
+        document.onkeyup = function (event) {
 
-            /*----------------------------------------*/
-            /* Game Engine:  Process the input events */
-            /*----------------------------------------*/
-            document.onkeyup = function (event) {
+            // Get keystroke
+            var userGuess = event.key.toLowerCase();
 
-                // Get keystroke
-                var userGuess = event.key.toLowerCase();
+            // Create a new game if none in progress
+            if (game.inProgress() == false) {
 
-                // Create a new game if none in progress
-                if (game.inProgress() == false) {
+                // Clear the board 
+                game.resetGame();
 
-                    // Clear the board 
-                    game.resetGame();
-
-                    // Write out the starting state
-                    prompts.reportResults(game, scoreboard);
-                    prompts.status("Let's do this!! - Choose a letter")
-                    return;
-                };
-
-                // Validate input - confirm they entered a letter
-                if (game.validKey(userGuess) == false) {
-                      prompts.status("Guess #" + game.getNumGuesses() + ": Oops, invalid key, we only need letters");
-                      return;
-                }
-
-                // Play a round
-                if (game.playRound(userGuess)) {
-                    prompts.status("Guess #" +  game.getNumGuesses() + ": Nice guess -- keep going");
-                } else {
-                    prompts.status("Guess #" +  game.getNumGuesses() + ": Oops, try again");
-                }
-
-                // Score the results
-                if (game.wonGame())
-                {
-                    scoreboard.won();
-                    game.stopGame();
-                    prompts.status("Congratulations!  You won!! -- Press any key to start again");
-                }
-                else if (game.gameOver())
-                {
-                    scoreboard.lost();
-                    game.stopGame();
-                    prompts.status("Sorry! It was: [ " + game.solution + " ] Better luck next time! -- Press any key to start again");
-                }
-                
-                // Update the display with the new state
+                // Write out the starting state
                 prompts.reportResults(game, scoreboard);
+                prompts.status("Let's do this!! - Choose a letter")
+                return;
             };
-        </script>
+
+            // Validate input - confirm they entered a letter
+            if (game.validKey(userGuess) == false) {
+                prompts.status("Guess #" + game.getNumGuesses() + ": Oops, invalid key, we only need letters");
+                return;
+            }
+
+            // Play a round
+            if (game.playRound(userGuess)) {
+                prompts.status("Guess #" + game.getNumGuesses() + ": Nice guess -- keep going");
+            } else {
+                prompts.status("Guess #" + game.getNumGuesses() + ": Oops, try again");
+            }
+
+            // Score the results
+            if (game.wonGame()) {
+                scoreboard.won();
+                game.stopGame();
+                prompts.status("Congratulations!  You won!! -- Press any key to start again");
+            } else if (game.gameOver()) {
+                scoreboard.lost();
+                game.stopGame();
+                prompts.status("Sorry! It was: [ " + game.solution +
+                    " ] Better luck next time! -- Press any key to start again");
+            }
+
+            // Update the display with the new state
+            prompts.reportResults(game, scoreboard);
+        };
+    </script>
 </body>
 
 </html>

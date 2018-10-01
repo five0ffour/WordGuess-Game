@@ -153,8 +153,6 @@ var game = {
         if (matched == false)
             this.guessesLeft--;
 
-
-
         // Valid round
         return true;
     },
