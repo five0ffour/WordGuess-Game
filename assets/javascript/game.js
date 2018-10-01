@@ -1,16 +1,18 @@
-// Game - tracks the current game in progress
+//-----
+// game object - tracks the current state of the game in progress
+//-----
 var game = {
 
     //------------------
     // object variables 
     //------------------
-    gameInProgress: false, // flags that the game is in progress
-    solution: [], // the secret word, no cheating!!
-    maxGuesses: 10, // number of *wrong* guesses use gets before game ends
-    guessesLeft: 10, // number of *wrong* guesses remaining in game
-    actualGuesses: 0,  // number of *valid* guesses actually taken (right or wrong)
-    boardState: [], // the partially revealed solution based on user guesses
-    lettersGuessed: [], // array of user guesses
+    gameInProgress: false,  // flags that the game is in progress
+    solution: [],           // the secret word, no cheating!!
+    maxGuesses: 6,          // number of *wrong* guesses user gets before game ends
+    guessesLeft: 6,         // number of *wrong* guesses remaining in game
+    actualGuesses: 0,       // number of *valid* guesses actually taken (right or wrong)
+    boardState: [],         // the partially revealed solution based on user guesses
+    lettersGuessed: [],     // array of user guesses
 
     //-----------------------
     // game object functions

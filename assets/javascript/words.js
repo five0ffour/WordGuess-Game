@@ -1,19 +1,32 @@
-// List of possible games - From Rotten Tomatoes
+//--------
+// wordTable - List of words as game options
+//--------
 var wordTable = {
 
+    //---------
     // Methods
+    //---------
+
+    //---
+    // getRandomWord() - returns a randomly selected word from the table and returns as a string
+    //---
     getRandomWord : function () {
 
       // Randomly chooses a choice from the words array.
       var choice = this.words[Math.floor(Math.random() * this.words.length)];   
-      console.log("The solution to this game will be: \"" + choice + "\"");     
+      console.log("wordTable.getRandomWord() - The randomly selected word is: \"" + choice + "\"");     
       
       return choice;
     },
 
-    // Possible answers
+    //-----------------
+    // Word Variables - 
+    //-----------------
+
+    // words[] - array of strings representing science fiction tv shows and movies 
     words : [
         // Movies
+        "Tron",
         "Jurassic Park",
         "Men in Black",
         "Total Recall",
