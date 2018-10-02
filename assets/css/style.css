@@ -1,13 +1,23 @@
+.noPadding {
+    padding: 0 !important;
+    overflow: hidden;
+}
+
 h1,
 h2 {
     font-family: 'Orbitron', sans-serif;
-    width: 100%;
     text-align: center;
 }
 
 h5 {
     font-family: 'Share Tech', sans-serif;
     text-align: center;
+}
+
+.card-header {
+    font-family: 'Share Tech', sans-serif;
+    text-align: center;
+    color:white;
 }
 
 #currentWord,
@@ -29,15 +39,10 @@ html {
     background: lightgray url(../images/hexellence.png);
 }
 
-.bg {
-    /* The image used */
+.jumbotron-welcome {
     background-image: url("../images/cityscape.png");
-
-    /* Half height */
-    height: 30%;
-
-    /* Center and scale the image nicely */
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    color: white;
 }
