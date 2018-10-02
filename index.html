@@ -40,12 +40,12 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row mb-4">
             <div class="col-lg-12">
-                <div class=" card" id="instructions">
+                <div class="card" id="instructions">
+                    <div class="card-header bg-primary">Messages</div>
                     <div class="card-body rounded">
                         <p class="card-text small">
-                            <p>Messages:</p>
                             <p id="keyPrompt" style="color:red;">Press any key to get started</p>
                         </p>
                     </div>
@@ -55,12 +55,12 @@
 
         <div class="row">
             <div class="col-xs-12 col-lg-3">
-                <div class="card" id="stats">
+                <div class="card mb-4" id="stats">
+                    <div class="card-header bg-primary">Scoreboard</div>
                     <div class="card-body rounded">
                         <p class="card-text small">
                             <!-- Scoreboard Status -->
-                            <h5>Scoreboard:</h5>
-                            <table>
+                            <table class="table table-bordered mb-0">
                                 <tr>
                                     <th scope="row">Wins </th>
                                     <td id="wins">0</td>
@@ -80,22 +80,22 @@
             </div>
 
             <div class="col-xs-12 col-lg-9">
-                <div class="card" id="stats">
+                <div class="card mb-4" id="stats">
+                    <div class="card-header bg-primary">Current Game</div>
                     <div class="card-body rounded">
                         <p class="card-text small">
                             <!-- Current Game Status -->
-                            <h5>Current Game:</h5>
-                            <table>
+                            <table class="table table-bordered mb-0">
                                 <tr>
                                     <th scope="row">Current Word</th>
                                     <td id="currentWord">None</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Number of guesses remaining</th>
+                                    <th scope="row">Guesses remaining</th>
                                     <td id="guessesLeft">6</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Letters already guessed</th>
+                                    <th scope="row">Previous Guesses</th>
                                     <td id="lettersGuessed">None</td>
                                 </tr>
                             </table>
