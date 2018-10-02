@@ -7,10 +7,12 @@ var game = {
     // object variables 
     //------------------
     gameInProgress: false,  // flags that the game is in progress
-    solution: [],           // the secret word, no cheating!!
     maxGuesses: 6,          // number of *wrong* guesses user gets before game ends
     guessesLeft: 6,         // number of *wrong* guesses remaining in game
     actualGuesses: 0,       // number of *valid* guesses actually taken (right or wrong)
+    letterMatched: false,   // flag each round if user guessed correctly or not
+    lastGuess: "",          // stores the last letter guessed for reporting puroposes
+    solution: [],           // the secret word, no cheating!!
     boardState: [],         // the partially revealed solution based on user guesses
     lettersGuessed: [],     // array of user guesses
 
@@ -26,6 +28,13 @@ var game = {
     },
 
     //---
+    // getLastGuess() - helper funciton to return the last played letter
+    //
+    getLastGuess : function () {
+        return this.lastGuess;
+    },
+
+    //---
     // inProgress() - responds if we are in the middle of a game
     //               (and need to keep track of state changes)
     inProgress : function () {
@@ -37,6 +46,13 @@ var game = {
     //---
     stopGame : function () {
         this.gameInProgress = false;
+    },
+
+    //---
+    // matched() - helper funciton to return if we had a good letter guessed last round
+    //
+    matched : function () {
+        return this.letterMatched;
     },
 
     //---
@@ -119,7 +135,7 @@ var game = {
             console.log("game.saveGuess() -- new letter: " + letter);
         }
 
-        // If we found the letter, return it an invalid guess
+        // If we found the letter, return it an invalid repeat guess
         return (!foundLetter);
     },
 
@@ -127,9 +143,11 @@ var game = {
     // playRouund() - adjudicates one guess and updates game state, returns true if the round was valid
     //---
     playRound: function (guess) {
-        var matched = false;
+        
+        this.letterMatched = false;
+        this.lastGuess = guess;
 
-        // Save the guess
+        // Save the guess and look to see if it's a repeat
         if (this.saveGuess(guess) == false) {
             // not a valid guess, fail out gracefully
             return false;
@@ -138,19 +156,19 @@ var game = {
         // Record this as a valid guess for reporting
         this.actualGuesses++;
 
-        // See if guess matches the solution
+        // See if the fresh guess matches a slot in the solution set
         for (i=0; i<this.solution.length; i++) {
             if (this.solution[i].toLowerCase() === guess) {
-                matched = true;
+                this.letterMatched = true;
 
-                // update our board state
+                // update our board state in the correct position
                 this.boardState = this.replaceAt(this.boardState, i, guess);
                 console.log("game.playRound() - match! \'" + guess + "\' at position: " + i);
             }
         }
 
         // Decrement the guesses only if they missed
-        if (matched == false)
+        if (this.letterMatched == false) 
             this.guessesLeft--;
 
         // Valid round

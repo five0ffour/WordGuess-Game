@@ -30,9 +30,18 @@ document.onkeyup = function (event) {
 
     // Play a round
     if (game.playRound(userGuess)) {
-        prompts.status("Guess #" + game.getNumGuesses() + ": Nice guess -- keep going");
+        //* Valid guess - return message depending on whether they found a letter or not
+        if (game.matched()) { 
+            scoreboard.creditWin();   // we pay on good guesses
+            prompts.status("Guess #" + game.getNumGuesses() + ": Good job -- keep going!");
+        }
+        else {
+            scoreboard.debitLoss();   // we charge for mistakes
+            prompts.status("Guess #" + game.getNumGuesses() + ": Not quite -- try again!");    
+        }
     } else {
-        prompts.status("Guess #" + game.getNumGuesses() + ": Oops, try again");
+        // Invalid guess - ignored, ask them to try again
+        prompts.status("Guess #" + game.getNumGuesses() + ": Oops, I don't recognize that key, try again");
     }
 
     // Score the results

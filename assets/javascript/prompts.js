@@ -11,8 +11,10 @@ var prompts = {
     losses         : 0,
     totalGames     : 0,
     currentWord    : "",
+    lastGuess      : "",
     lettersGuessed : "",
     guessesLeft    : 0,
+    credits        : 0,
 
     //------------------
     // prompts Methods 
@@ -26,7 +28,10 @@ var prompts = {
          this.wins           = document.getElementById("wins");
          this.losses         = document.getElementById("losses");
          this.totalGames     = document.getElementById("totalGames");
+         this.credits        = document.getElementById("credits");
+
          this.currentWord    = document.getElementById("currentWord");
+         this.lastGuess      =  document.getElementById("lastGuess");
          this.lettersGuessed = document.getElementById("lettersGuessed");
          this.guessesLeft    = document.getElementById("guessesLeft");
      }, 
@@ -38,7 +43,10 @@ var prompts = {
         this.wins.textContent           = scoreboard.wins;
         this.losses.textContent         = scoreboard.losses;
         this.totalGames.textContent     = scoreboard.gamesPlayed;
+        this.credits.textContent        = scoreboard.credits;
+
         this.currentWord.textContent    = game.boardState;
+        this.lastGuess.textContent      = game.lastGuess;
         this.lettersGuessed.textContent = game.lettersGuessed;
         this.guessesLeft.textContent    = game.guessesLeft;
     },

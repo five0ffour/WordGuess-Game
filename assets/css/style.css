@@ -25,7 +25,9 @@ h5 {
 #losses,
 #guessesLeft,
 #lettersGuessed,
-#totalGames {
+#totalGames,
+#credits,
+#lastGuess {
     font-family: 'Orbitron', sans-serif;
     font-size: 20px;
     color: blue;
