@@ -7,10 +7,10 @@ var game = {
     // object variables 
     //------------------
     gameInProgress: false,  // flags that the game is in progress
+    letterMatched: false,   // flag each round if user guessed correctly or not
     maxGuesses: 6,          // number of *wrong* guesses user gets before game ends
     guessesLeft: 6,         // number of *wrong* guesses remaining in game
     actualGuesses: 0,       // number of *valid* guesses actually taken (right or wrong)
-    letterMatched: false,   // flag each round if user guessed correctly or not
     lastGuess: "",          // stores the last letter guessed for reporting puroposes
     solution: [],           // the secret word, no cheating!!
     boardState: [],         // the partially revealed solution based on user guesses
@@ -21,7 +21,7 @@ var game = {
     //-----------------------
 
     //---
-    // getNumGuesses() - computes the round we're in based on the valid guesses
+    // getNumGuesses() - helper functoin to return the round we're in based on the valid guesses
     //---
     getNumGuesses : function () {
         return this.actualGuesses;
@@ -100,6 +100,7 @@ var game = {
         this.actualGuesses = 0;
         this.lettersGuessed = [];
         this.boardState = [];
+        this.lastGuess = "";
 
         this.solution = wordTable.getRandomWord();
 

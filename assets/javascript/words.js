@@ -26,6 +26,7 @@ var wordTable = {
     // words[] - array of strings representing science fiction tv shows and movies 
     words : [
         // Movies
+        "Starship Troopers",
         "Tron",
         "Jurassic Park",
         "Men in Black",
