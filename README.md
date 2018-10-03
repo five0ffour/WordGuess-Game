@@ -25,6 +25,14 @@ GitBash installed locally
 4.  Open Index.html in your favorite browser
         It should display the game board and prompt you for an entry
 
+##Developer notes
+index.html:  main entry point and user interface
+input.js:  the main onKeyUp processor and game event loop          
+words.js:  the source of the game's dictionary of words        
+game.js:   the bulk of the game state and rules handling            
+prompts.js: the UI interface for the dynamic elements of the page 
+scoreboard.js: the state management held between game rounds       
+
 ##Built With
 Bootstrap - The CSS framework used
 Google Fonts
