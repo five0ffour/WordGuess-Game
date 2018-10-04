@@ -20,6 +20,13 @@ h5 {
     color:white;
 }
 
+#keyPrompt {
+    font-family: 'Share Tech', sans-serif;
+    font-size:  18px;
+    color:black;
+}
+
+/* Font style for the numbers */
 #currentWord,
 #wins,
 #losses,

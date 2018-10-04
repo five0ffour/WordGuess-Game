@@ -56,21 +56,6 @@ var game = {
     },
 
     //---
-    // validKey() - Determine if this an acceptable keystroke.
-    //              We only accept [a-z] or [A-Z]
-    //              May consider adding a quit key (Escape) and hint key (?)
-    //---
-    validKey: function (key) {
-
-        if (!/^[a-zA-Z]*$/g.test(key)) {
-            console.log("game.validKey() - invalid character [" + key + "]");
-            return false;
-        }
-
-        return true;
-    },
-
-    //---
     // wonGame() - checks to see if the user found our word
     //---
     wonGame: function () {
@@ -90,6 +75,23 @@ var game = {
     gameOver: function () {
         return (this.guessesLeft <= 0);
     },
+
+    //---
+    // setGameMode() - set the maximum number of missed guesses in any game,  the classic game is 6
+    //---
+    setGameMode: function (mode) {
+        if (mode === "h") {
+            // Hard Mode
+            this.maxGuesses = 4;
+        } else if (mode == "e") {
+            // Easy Mode
+            this.maxGuesses = 10;
+        } else {
+            // Normal Mode
+            this.maxGuesses = 6;
+        }
+
+    }, 
 
     //---
     // resetGame() - resets the board to a new game

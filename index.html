@@ -8,14 +8,14 @@
 <!--     Word Guessing Game.  The instructions for the game are in README.md  -->
 <!--     All javascript but the includes are abstracted out of this file and  -->
 <!--     stored in following locations.                                       -->
-<!--                                                                          -->     
+<!--                                                                          -->
 <!--     input.js:  the main onKeyUp processor and game event loop            -->
 <!--     words.js:       the source of the game's dictionary of words         -->
 <!--     game.js:   the bulk of the game state and rules handling             -->
 <!--     prompts.js:   the UI interface for the dynamic elements of the page  -->
 <!--     scoreboard.js:  the state management held between game rounds        -->
 
-<!-- NOTE TO TA:  Per instructions,  this app is linked to my portoflio page            -->
+<!-- NOTE TO TA:  Per instructions,  this app is linked from my portoflio page          -->
 <!--              at https://five0ffour.github.io/Basic-Portfolio/portfolio.html        -->
 <!--              at https://five0ffour.github.io/Bootstrap-Portfolio/portfolio.html    -->
 <!--              at https://five0ffour.github.io/Responsive-Portfolio/portfolio.html   -->
@@ -130,19 +130,20 @@
                 <div class="card" id="instructions">
                     <div class="card-header bg-secondary">Messages</div>
                     <div class="card-body rounded">
-                        <p class="card-text small">
-                            <p id="keyPrompt">
-                                We added a twist to a classic game. We'll seed you 30 credits into your bank account.
-                                The bank pays out two credits for every valid guess, but charges five for every mistake. 
-                                Try not to go bankrupt!
-                                <span style="color:red;">Press any key to get started </span>
-                            </p>
-                        </p>
+                        <div class="card-text small">
+                            <div id="keyPrompt">
+                                We added a twist to a classic game. We'll seed you 30 credits into your bank
+                                    account.  The bank pays out two credits for every valid guess, but charges five for
+                                    every mistake. Try not to go bankrupt!
+                                <p style="color:blue">Press any key to get started (or "e" for easy mode or "h" for hard mode)</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Javascript variable and function declarations -->
     <script src="assets/javascript/words.js"></script>
