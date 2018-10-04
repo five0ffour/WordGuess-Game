@@ -3,44 +3,6 @@
     overflow: hidden;
 }
 
-h1,
-h2 {
-    font-family: 'Orbitron', sans-serif;
-    text-align: center;
-}
-
-h5 {
-    font-family: 'Share Tech', sans-serif;
-    text-align: center;
-}
-
-.card-header {
-    font-family: 'Share Tech', sans-serif;
-    text-align: center;
-    color:white;
-}
-
-#keyPrompt {
-    font-family: 'Share Tech', sans-serif;
-    font-size:  18px;
-    color:black;
-}
-
-/* Font style for the numbers */
-#currentWord,
-#wins,
-#losses,
-#guessesLeft,
-#lettersGuessed,
-#totalGames,
-#credits,
-#lastGuess {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 20px;
-    color: blue;
-    padding: 10px;
-}
-
 body,
 html {
     height: 100%;
@@ -48,6 +10,24 @@ html {
     background: lightgray url(../images/hexellence.png);
 }
 
+/* Jumbotron title */
+h1
+{
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    font-size: 2.5em;
+    padding: 0.5em;
+}
+
+/* Jumbotron subtitle */
+h5 {
+    font-family: 'Share Tech', sans-serif;
+    text-align: center;
+    font-size: 1.5em;
+    padding: 0.5em;
+}
+
+/* Jumbotron background */
 .jumbotron-welcome {
     background-image: url("../images/cityscape.png");
     background-size: cover;
@@ -55,3 +35,42 @@ html {
     background-repeat: no-repeat;
     color: white;
 }
+
+/* Bootstrap card titles */
+.card-header {
+    font-family: 'Share Tech', sans-serif;
+    text-align: center;
+    color:white;
+}
+
+/* Card row headings */
+th {
+    font-family:'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+    text-align: left;
+    color:black;    
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Font style for the numbers */
+td {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    color: blue;
+    padding: 10px;
+}
+
+/* Message Card text */
+#keyPrompt {
+    font-family: 'Share Tech', sans-serif;
+    font-size:  18px;
+    color:black;
+    padding:  1em;
+}
+
+/* Message card sub-text */
+#start {
+    color:blue;
+    margin-top:  1em;
+}
+
