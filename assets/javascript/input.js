@@ -2,6 +2,29 @@
 // document.onkeyup() - Main controller loop -  processes all of the keyboard engine.
 //---
 
+//---
+// input - helper function utility class for parsing and validating input keystrokes
+//---
+var input = {
+
+    //---
+    // validKey() - Determine if this an acceptable keystroke.
+    //              We only accept [a-z] or [A-Z]
+    //              May consider adding a quit key (Escape) and hint key (?)
+    //---
+    validKey: function (key) {
+
+        // Regex expression parsing,  accept alphanumerics only, upper or lower case
+        if (!/^[a-zA-Z]*$/g.test(key)) {
+            console.log("input.validKey() - invalid character [" + key + "]");
+            return false;
+        }
+
+        return true;
+    }
+
+}
+
 /*--------------------------------------------------------------------------*/
 /* Global Event Handler - Game Engine Controller:  Process the input events */
 /*--------------------------------------------------------------------------*/
@@ -22,7 +45,7 @@ document.onkeyup = function (event) {
         prompts.reportResults(game, scoreboard);
         prompts.status("Let's do this!! - Choose a letter")
         return;
-    };
+    }
 
     // Validate input - confirm they entered a letter
     if (input.validKey(userGuess) == false) {
@@ -62,28 +85,4 @@ document.onkeyup = function (event) {
 
     // Update the display with the new state
     prompts.reportResults(game, scoreboard);
-};
-
-
-//---
-// input - helper function utility class for parsing and validating input keystrokes
-//---
-var input = {
-
-    //---
-    // validKey() - Determine if this an acceptable keystroke.
-    //              We only accept [a-z] or [A-Z]
-    //              May consider adding a quit key (Escape) and hint key (?)
-    //---
-    validKey: function (key) {
-
-        // Regex expression parsing,  accept alphanumerics only, upper or lower case
-        if (!/^[a-zA-Z]*$/g.test(key)) {
-            console.log("input.validKey() - invalid character [" + key + "]");
-            return false;
-        }
-
-        return true;
-    }
-
-};
+}
