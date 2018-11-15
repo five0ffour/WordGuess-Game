@@ -24,7 +24,10 @@ GitBash installed locally
          "git clone https://github.com/five0ffour/WordGuess-Game.git"
 4.  Open Index.html in your favorite browser
         It should display the game board and prompt you for an entry
-
+  
+## Sample install    
+http://michaelgalarneau.com/TriviaGame/  
+  
 ##Developer notes
 index.html:  main entry point and user interface
 input.js:  the main onKeyUp processor and game event loop          
