@@ -25,7 +25,7 @@ GitBash installed locally
 4.  Open Index.html in your favorite browser
         It should display the game board and prompt you for an entry
   
-## Sample install    
+##Sample install    
 http://michaelgalarneau.com/WordGuess-Game/  
   
 ##Developer notes
