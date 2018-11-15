@@ -26,7 +26,7 @@ GitBash installed locally
         It should display the game board and prompt you for an entry
   
 ## Sample install    
-http://michaelgalarneau.com/TriviaGame/  
+http://michaelgalarneau.com/WordGuess-Game/  
   
 ##Developer notes
 index.html:  main entry point and user interface
